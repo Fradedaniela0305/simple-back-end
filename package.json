@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/Fradedaniela0305/simple-back-end/issues"
   },
-  "homepage": "https://github.com/Fradedaniela0305/simple-back-end#readme"
+  "homepage": "https://github.com/Fradedaniela0305/simple-back-end#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
 }
