@@ -21,7 +21,7 @@ const app = express(); // app instance
 const PORT = 8383; // define where in the ip adress the incoming requests will come
 
 let data = {
-    users : ["james"]
+    users : ["Hello"]
 }
 
 // Middleware
@@ -44,7 +44,10 @@ app.get('/', (req,res) => {
 
 app.get('/dashboard',(req, res) => {
     console.log("Now i got to dashboaurd");
-    res.send('hi')
+    res.send(`<body> 
+        <h1> dashbuard</h1>
+        </body>`)
+
 })
 
 // so we have the get http verb, defined two endopoints that use it and how we respond to them
@@ -53,7 +56,8 @@ app.get('/dashboard',(req, res) => {
 // website endpoints -> for sendint back HTML
 
 app.get('/homepage', (req,res)=>{
-    res.send('<h1>homepage</h1>')
+    res.send(`<h1>homepage</h1>
+        <a href = "/dashboard">Dashboard</a>`)
 })
 
 // API endpoints (non visual)
@@ -86,5 +90,11 @@ app.post('/api/data', (req, res) => {
     data.users.push(newEntry.name);
     res.sendStatus(201); // associated with created outcome
 
+})
+
+app.delete('/api/data', (req,res)=> {
+    data.users.pop()
+    console.log('deleted element off array')
+    res.sendStatus(203)
 })
 
