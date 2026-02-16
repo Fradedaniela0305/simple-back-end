@@ -177,7 +177,7 @@ Recommended improvement: Use `204 No Content` for deletion success.
 
 ---
 
-## 🔄 CRUD Mapping
+## CRUD Mapping
 
 | Operation | HTTP Verb | Route      |
 |-----------|----------|------------|
@@ -187,7 +187,7 @@ Recommended improvement: Use `204 No Content` for deletion success.
 
 ---
 
-## 🛠 Possible Improvements
+## Possible Improvements
 
 - Delete a specific user by name or ID
 - Add PUT endpoint for updating users
@@ -198,7 +198,7 @@ Recommended improvement: Use `204 No Content` for deletion success.
 
 ---
 
-## 🎯 Learning Objectives
+## Learning Objectives
 
 This project demonstrates:
 
