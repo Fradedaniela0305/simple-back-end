@@ -20,6 +20,12 @@ const express = require('express'); // now we load express into our project
 const app = express(); // app instance
 const PORT = 8383; // define where in the ip adress the incoming requests will come
 
+let data = {
+    users : ["james"]
+}
+
+// Middleware
+app.use(express.json());
 
 // configure server to interpret requests
 // add HTTP verbs and routes
@@ -43,9 +49,42 @@ app.get('/dashboard',(req, res) => {
 
 // so we have the get http verb, defined two endopoints that use it and how we respond to them
 
-app.get('/htmlcode', (req,res)=>{
-    res.send('<h1> htlm code because why not</h1>')
+
+// website endpoints -> for sendint back HTML
+
+app.get('/homepage', (req,res)=>{
+    res.send('<h1>homepage</h1>')
 })
 
+// API endpoints (non visual)
+
+app.get('/api/data', (req,res)=>{
+    console.log('send my data')
+    res.send(data)
+})
+// but how do we test this?
+// we will use the clinet emulator extension
+
 app.listen(PORT, () => console.log(`server has started on: ${PORT}`)); // listens to incoming resquests 
+
+
+// CRUD: create-post read-get update-put delete-delete
+
+app.get('/api/datastring', (req,res)=>{
+    res.send(`
+        <body>
+        <h1> dataaa</h1>
+        <p> ${JSON.stringify(data)}</p>
+            
+            </body>`) // template literal string to inject data
+})
+
+app.post('/api/data', (req, res) => {
+    // someone wants to create a user
+    // someone posts data through this route
+    const newEntry = req.body; // look for hte body of the request, the data associated with the request since its create
+    data.users.push(newEntry.name);
+    res.sendStatus(201); // associated with created outcome
+
+})
 
